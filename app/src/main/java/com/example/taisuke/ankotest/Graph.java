@@ -31,16 +31,23 @@ import static com.google.firebase.internal.FirebaseAppHelper.getUid;
 public class Graph extends AppCompatActivity {
     private static final String TAG = "" ;
     private DatabaseReference mDatabase;
+    private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int num = 1;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
+        String id_name;
+        Intent i = getIntent();
+        if(i.getStringExtra("NAME") != null) {
+            id_name = i.getStringExtra("NAME");
+            setName(id_name);
+        }
 
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("data");
+        DatabaseReference myRef = database.getReference(getName());
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -61,7 +68,6 @@ public class Graph extends AppCompatActivity {
             }
         });
 
-        Intent i = getIntent();
         if(i.getStringExtra("DATA") != null) {
             String text = i.getStringExtra("DATA");
             i.getIntExtra("Count" ,num);
@@ -79,6 +85,7 @@ public class Graph extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), Main2Activity.class);
+                intent.putExtra("NAME",getName());
                 startActivity(intent);
             }
         });
@@ -132,6 +139,13 @@ public class Graph extends AppCompatActivity {
             buff.append(uriage + string + space + kosuu);
         }
         return buff.toString();
+    }
+    public void setName(String intent_name){
+        this.name = intent_name;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
 }

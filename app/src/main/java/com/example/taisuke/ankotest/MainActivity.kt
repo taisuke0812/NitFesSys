@@ -103,8 +103,11 @@ class MainActivity : AppCompatActivity() {
         if(id=="master" && pass=="1"){
             intent.putExtra("NAME","master")
             startActivity(intent)
-        }else{
-            toast("IDかパスワードが違います")
+        }
+
+        if(id == "003" && pass == "masuyama" ){
+            intent.putExtra("NAME","003")
+            startActivity(intent)
         }
 
     }

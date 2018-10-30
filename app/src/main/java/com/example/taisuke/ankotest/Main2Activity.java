@@ -29,7 +29,11 @@ public class Main2Activity extends AppCompatActivity {
         Intent i = getIntent();
         if(i.getStringExtra("NAME") != null) {
             id_name = i.getStringExtra("NAME");
+            setName(id_name);
         }
+        Intent intent1 = new Intent(getApplication(), button_activity.class);
+        intent1.putExtra("NAME",id_name);
+
         /*
         if(i.getStringExtra("DATA") != null) {
            setName(i.getStringExtra("DATA"));
@@ -70,6 +74,7 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 //Intent intent1 = new Intent(getApplication(), QrCodeReadInViewActivity.class);
                 Intent intent1 = new Intent(getApplication(), button_activity.class);
+                intent1.putExtra("NAME",getName());
                 startActivity(intent1);
             }
         });
@@ -77,6 +82,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent2 = new Intent(getApplication(), Kuchikomi.class);
+                intent2.putExtra("NAME",getName());
                 startActivity(intent2);
 
             }
@@ -85,7 +91,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent3 = new Intent(getApplication(), Graph.class);
-                intent3.putExtra("DATA",getName());
+                intent3.putExtra("NAME",getName());
                 int num = getCount();
                 intent3.putExtra("Count",1);
                 startActivity(intent3);
@@ -95,7 +101,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent4 = new Intent(getApplication(), MainActivity.class);
-
+                //intent4.putExtra("NAME",getName());
                 startActivity(intent4);
             }
         });
