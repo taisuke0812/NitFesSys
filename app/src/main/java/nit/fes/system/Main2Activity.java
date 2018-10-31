@@ -18,7 +18,9 @@ public class Main2Activity extends AppCompatActivity {
     private String name;
     private int count = 0;
     //private StringBuilder sb;
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    //ここなんなんだろう
+    //@RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    //一応消してみる
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(nit.fes.system.R.layout.activity_main2);
