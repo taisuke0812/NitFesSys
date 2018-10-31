@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AnkoTest</string>
+    <string name="app_name">高専祭B1グランプリ</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
