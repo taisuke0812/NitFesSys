@@ -26,22 +26,25 @@ public class button_activity extends AppCompatActivity {
             setName(id_name);
         }
 
-            key_intent = i.getIntExtra("KEY",0);
-            setKey(key_intent);
+        key_intent = i.getIntExtra("KEY",0);
+        setKey(key_intent);
+
         Date date = new Date();
         String date_data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
         data send_data = new data(1,"[" + date_data + "]");
+        setKey(getKey() + 1);
         sendData(send_data);
 
         Intent intent = new Intent(getApplication(), show_image.class);
         //intent.putExtra("DATA", barcodeResult.getText());
         intent.putExtra("NAME",getName());
+        intent.putExtra("KEY",getKey());
         startActivity(intent);
     }
 
     public void sendData(data _data) {
         DatabaseReference dataref = FirebaseDatabase.getInstance().getReference(getName());
-        String key = dataref.push().getKey();
+        String key = String.valueOf(this.getKey());
         Map<String, Object> map = new HashMap<>();
         map.put(key, _data.toMap());
         dataref.updateChildren(map);

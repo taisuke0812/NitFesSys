@@ -17,10 +17,13 @@ public class Main2Activity extends AppCompatActivity {
     //private Intent intent = new Intent(getApplication(), QrCodeReadInViewActivity.class);
     private String name;
     private int count = 0;
+    private int key;
+
     //private StringBuilder sb;
     //ここなんなんだろう
     //@RequiresApi(api = Build.VERSION_CODES.KITKAT)
     //一応消してみる
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(nit.fes.system.R.layout.activity_main2);
@@ -30,8 +33,9 @@ public class Main2Activity extends AppCompatActivity {
             id_name = i.getStringExtra("NAME");
             setName(id_name);
         }
-        Intent intent1 = new Intent(getApplication(), button_activity.class);
-        intent1.putExtra("NAME",id_name);
+        int key_intent;
+        key_intent = i.getIntExtra("KEY",0);
+        setKey(key_intent);
 
         /*
         if(i.getStringExtra("DATA") != null) {
@@ -74,6 +78,7 @@ public class Main2Activity extends AppCompatActivity {
                 //Intent intent1 = new Intent(getApplication(), QrCodeReadInViewActivity.class);
                 Intent intent1 = new Intent(getApplication(), button_activity.class);
                 intent1.putExtra("NAME",getName());
+                intent1.putExtra("KEY",getKey());
                 startActivity(intent1);
             }
         });
@@ -82,6 +87,7 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent2 = new Intent(getApplication(), Kuchikomi.class);
                 intent2.putExtra("NAME",getName());
+                intent2.putExtra("KEY",getKey());
                 startActivity(intent2);
 
             }
@@ -91,6 +97,7 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent3 = new Intent(getApplication(), Graph.class);
                 intent3.putExtra("NAME",getName());
+                intent3.putExtra("KEY",getKey());
                 int num = getCount();
                 intent3.putExtra("Count",1);
                 startActivity(intent3);
@@ -123,7 +130,12 @@ public class Main2Activity extends AppCompatActivity {
     private int getCount(){
         return this.count;
     }
-
+    public void setKey(int intent_key){
+        this.key = intent_key;
+    }
+    public int  getKey(){
+        return this.key;
+    }
 /*
     private void SetTextBox(String text){
         this.sb.append(text);

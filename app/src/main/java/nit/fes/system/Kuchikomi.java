@@ -9,17 +9,20 @@ import android.webkit.WebViewClient;
 
 public class Kuchikomi extends AppCompatActivity {
     private String name;
+    private int key;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(nit.fes.system.R.layout.activity_kuchikomi);
-
+        int key_intent;
         String id_name;
         Intent i = getIntent();
         if(i.getStringExtra("NAME") != null) {
             id_name = i.getStringExtra("NAME");
             setName(id_name);
         }
+        key_intent = i.getIntExtra("KEY",0);
+        setKey(key_intent);
         WebView webview = findViewById(nit.fes.system.R.id.web);
         webview.loadUrl("https://twitter.com/search?f=tweets&vertical=default&q=%23NITFes&src=typd");
         webview.setWebViewClient(new WebViewClient());
@@ -41,8 +44,14 @@ public class Kuchikomi extends AppCompatActivity {
     public void setName(String intent_name){
         this.name = intent_name;
     }
-
     public String getName(){
         return this.name;
     }
+    public void setKey(int intent_key){
+        this.key = intent_key;
+    }
+    public int  getKey(){
+        return this.key;
+    }
+
 }

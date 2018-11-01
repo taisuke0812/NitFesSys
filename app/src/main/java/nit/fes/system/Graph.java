@@ -27,6 +27,7 @@ public class Graph extends AppCompatActivity {
     private static final String TAG = "" ;
     private DatabaseReference mDatabase;
     private String name;
+    private int key;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int num = 1;
@@ -138,9 +139,15 @@ public class Graph extends AppCompatActivity {
     public void setName(String intent_name){
         this.name = intent_name;
     }
-
     public String getName(){
         return this.name;
+    }
+
+    public void setKey(int intent_key){
+        this.key = intent_key;
+    }
+    public int  getKey(){
+        return this.key;
     }
 
 }
