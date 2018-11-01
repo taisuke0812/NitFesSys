@@ -14,15 +14,20 @@ import java.util.Map;
 
 public class button_activity extends AppCompatActivity {
     private String name;
+    private int key;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String id_name;
+        int key_intent;
         Intent i = getIntent();
         if(i.getStringExtra("NAME") != null) {
             id_name = i.getStringExtra("NAME");
             setName(id_name);
         }
+
+            key_intent = i.getIntExtra("KEY",0);
+            setKey(key_intent);
         Date date = new Date();
         String date_data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
         data send_data = new data(1,"[" + date_data + "]");
@@ -45,8 +50,14 @@ public class button_activity extends AppCompatActivity {
     public void setName(String intent_name){
         this.name = intent_name;
     }
+    public String getName(){ return this.name; }
 
-    public String getName(){
-        return this.name;
+    public void setKey(int intent_key){
+        this.key = intent_key;
     }
+    public int  getKey(){
+        return this.key;
+    }
+
+
 }
