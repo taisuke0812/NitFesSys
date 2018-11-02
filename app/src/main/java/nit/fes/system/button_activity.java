@@ -41,7 +41,7 @@ public class button_activity extends AppCompatActivity {
         Date date = new Date();
         String date_data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
 
-
+        /*
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(getName() + "/" + String.valueOf(getNum()) + "/" + date_data.substring(11,13) +"/key");
         myRef.addValueEventListener(new ValueEventListener() {
@@ -59,7 +59,7 @@ public class button_activity extends AppCompatActivity {
             public void onCancelled(final DatabaseError databaseError) {
             }
         });
-
+        */
         /*
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(getName() + "/key");
@@ -91,10 +91,10 @@ public class button_activity extends AppCompatActivity {
     */
 
 
-        /*
+
         key_intent = i.getIntExtra("KEY",0);
         setKey(key_intent);
-        */
+
 
 
         data send_data = new data(1, date_data );
