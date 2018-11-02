@@ -41,25 +41,25 @@ public class button_activity extends AppCompatActivity {
         Date date = new Date();
         String date_data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
 
-        /*
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(getName() + "/" + String.valueOf(getNum()) + "/" + date_data.substring(11,13) +"/key");
+        DatabaseReference myRef = database.getReference(getName() + "/" + String.valueOf(getNum()) + "/" + date_data.substring(8,10) + "/" + date_data.substring(11,13) +"/key");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 data something = dataSnapshot.getValue(data.class);
-                double get_count = dataSnapshot.child("count").getValue(double.class);
+                //double get_count = dataSnapshot.child("count").getValue(double.class);
                 //String get_time = something.getTime();
-                //double get_count = something.getCount();
+                double get_count = something.getCount();
                 int count = (int)get_count;
-                setKey(count);
+                //setKey(count);
             }
 
             @Override
             public void onCancelled(final DatabaseError databaseError) {
             }
         });
-        */
+
         /*
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(getName() + "/key");
@@ -114,7 +114,7 @@ public class button_activity extends AppCompatActivity {
 
     public void sendData(data _data,String date) {
         DatabaseReference dataref = FirebaseDatabase.getInstance().getReference(getName());
-        String key = String.valueOf(getNum()) + "/" +date.substring(8,19) + "/" + date.substring(11,13) + "/" + String.valueOf(this.getKey());
+        String key = String.valueOf(getNum()) + "/" +date.substring(8,10) + "/" + date.substring(11,13) + "/" + String.valueOf(this.getKey());
         Map<String, Object> map = new HashMap<>();
         map.put(key, _data.toMap());
         dataref.updateChildren(map);
