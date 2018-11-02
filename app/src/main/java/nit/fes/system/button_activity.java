@@ -20,6 +20,7 @@ public class button_activity extends AppCompatActivity {
     private String name;
     private int key;
     private String __text;//for test
+    private int num;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +31,36 @@ public class button_activity extends AppCompatActivity {
             id_name = i.getStringExtra("NAME");
             setName(id_name);
         }
+        /*
+        key_intent = i.getIntExtra("KEY",0);
+        setKey(key_intent);
+        */
+        int shop_num = i.getIntExtra("Num",0);
+        setNum(shop_num);
+
+        Date date = new Date();
+        String date_data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
 
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(getName() + "/" + String.valueOf(getNum()) + "/" + date_data.substring(11,13) +"/key");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                data something = dataSnapshot.getValue(data.class);
+                double get_count = dataSnapshot.child("count").getValue(double.class);
+                //String get_time = something.getTime();
+                //double get_count = something.getCount();
+                int count = (int)get_count;
+                setKey(count);
+            }
 
+            @Override
+            public void onCancelled(final DatabaseError databaseError) {
+            }
+        });
+
+        /*
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(getName() + "/key");
         myRef.addValueEventListener(new ValueEventListener() {
@@ -46,7 +74,7 @@ public class button_activity extends AppCompatActivity {
                 data __data = dataSnapshot.getValue(data.class);
                 double i = __data.getCount();
                 setKey((int)i);
-                */
+
                 Map<String, Object> map = new HashMap<>();
                 map.put("count",dataSnapshot.getValue(Object.class));
                 String get_key = map.get("count").toString();
@@ -60,21 +88,20 @@ public class button_activity extends AppCompatActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
-
+    */
 
 
         /*
         key_intent = i.getIntExtra("KEY",0);
         setKey(key_intent);
         */
-        Date date = new Date();
-        String date_data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
 
-        data send_data = new data(1,"[" + date_data + "]");
+
+        data send_data = new data(1, date_data );
         setKey(getKey() + 1);
         data send_key_count = new data(getKey(),date_data);
         data send_test = new data (1,get__text());
-        sendData(send_data);
+        sendData(send_data,date_data);
         sendData_(send_key_count);
         sendData__(send_test);
 
@@ -85,9 +112,9 @@ public class button_activity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void sendData(data _data) {
+    public void sendData(data _data,String date) {
         DatabaseReference dataref = FirebaseDatabase.getInstance().getReference(getName());
-        String key = String.valueOf(this.getKey());
+        String key = String.valueOf(getNum()) + "/" +date.substring(8,19) + "/" + date.substring(11,13) + "/" + String.valueOf(this.getKey());
         Map<String, Object> map = new HashMap<>();
         map.put(key, _data.toMap());
         dataref.updateChildren(map);
@@ -121,4 +148,7 @@ public class button_activity extends AppCompatActivity {
     }
     public String get__text(){return this.__text;}
     public void set__text(String text){this.__text = text;}
+
+    public void setNum(int _num){this.num = _num;}
+    public int getNum(){return this.num;}
 }
