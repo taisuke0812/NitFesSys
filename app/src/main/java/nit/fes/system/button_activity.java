@@ -48,15 +48,17 @@ public class button_activity extends AppCompatActivity {
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                /*
-                data something = dataSnapshot.getValue(data.class);
-                  //double get_count = dataSnapshot.child("count").getValue(double.class);
+
+                Map<String,Object> something = (Map<String,Object>)dataSnapshot.getValue();
+                int sending = (int)Double.parseDouble((String)something.get("count"));
+                //data sent = new data(100,sending.getTime());
+                //double get_count = Double.parseDouble(something.get("count").toString());
                     //String get_time = something.getTime();
 
-                double get_count = something.getCount();
-                int count = (int)get_count;
-                setKey(count);
-                */
+                //double get_count = something.getCount();
+                //int count = (int)get_count;
+                setKey(sending);
+
 
             }
 
@@ -67,8 +69,8 @@ public class button_activity extends AppCompatActivity {
 
 
 
-        key_intent = i.getIntExtra("KEY",0);
-        setKey(key_intent);
+        //key_intent = i.getIntExtra("KEY",0);
+        //setKey(key_intent);
 
 
         data send_data = new data(1, date_data );
