@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class data {
-    private double count;
-    private String time;
+    public double count;
+    public String time;
 
     public data(double count,String time){
         this.count = count;
