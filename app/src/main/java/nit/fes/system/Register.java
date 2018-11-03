@@ -60,8 +60,6 @@ public class Register extends AppCompatActivity {
                     startActivity(intent);
                 }else{
 
-
-
                 }
 
 

@@ -19,14 +19,16 @@ class MainActivity : AppCompatActivity() {
         //val intent: Intent = Intent(applicationContext, Authorized::class.java)
 
         val intent2 : Intent = Intent(applicationContext, Register::class.java)
+
+        val auth : Intent = Intent(applicationContext,Authorized::class.java)
         //↑これです
         //val intent: Intent = Intent(applicationContext,toki::class.java)
-        create(intent,intent2)
+        create(intent,intent2,auth)
 
     }
 
 
-    private fun create(intent: Intent, intent2 : Intent){
+    private fun create(intent: Intent, intent2 : Intent, auth : Intent){
         verticalLayout {
             gravity = Gravity.CENTER
             padding = dip(20)
@@ -49,8 +51,11 @@ class MainActivity : AppCompatActivity() {
 
             button("Login!") {
                 onClick {
-                    toast("try login")
-                    login(name.text.toString(), pass.text.toString(), intent)
+                    //toast("try login")
+                    //login(name.text.toString(), pass.text.toString(), intent)
+                    auth.putExtra("id",name.text.toString())
+                    auth.putExtra("pass",pass.text.toString())
+                    startActivity(auth)
                 }
             }.lparams(dip(280), sp(60))
 

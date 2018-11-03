@@ -15,7 +15,7 @@ import java.io.InputStream;
 
 public class Main2Activity extends AppCompatActivity {
     //private Intent intent = new Intent(getApplication(), QrCodeReadInViewActivity.class);
-    private String name;
+    private String name = "error";
     private int count = 0;
     private int key;
 
@@ -23,6 +23,7 @@ public class Main2Activity extends AppCompatActivity {
     //ここなんなんだろう
     //@RequiresApi(api = Build.VERSION_CODES.KITKAT)
     //一応消してみる
+    //追記2018.11.03 やっぱほしそう
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

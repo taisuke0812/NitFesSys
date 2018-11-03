@@ -21,6 +21,7 @@ public class Kuchikomi extends AppCompatActivity {
             id_name = i.getStringExtra("NAME");
             setName(id_name);
         }
+
         key_intent = i.getIntExtra("KEY",0);
         setKey(key_intent);
         WebView webview = findViewById(nit.fes.system.R.id.web);

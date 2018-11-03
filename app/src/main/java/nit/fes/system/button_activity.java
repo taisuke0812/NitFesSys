@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class button_activity extends AppCompatActivity {
-    private String name;
+    private String name = "error";
     private int key = 0;
     private String __text;//for test
     private int num;
@@ -31,10 +31,8 @@ public class button_activity extends AppCompatActivity {
             id_name = i.getStringExtra("NAME");
             setName(id_name);
         }
-        /*
-        key_intent = i.getIntExtra("KEY",0);
-        setKey(key_intent);
-        */
+
+
         int shop_num = i.getIntExtra("Num",0);
         setNum(shop_num);
 
@@ -52,15 +50,12 @@ public class button_activity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Map<String,Object> something = (Map<String,Object>)dataSnapshot.getValue();
-                double sending = Double.parseDouble(something.get("count").toString()) + 1.0;
-                //data sent = new data(100,sending.getTime());
-                //double get_count = Double.parseDouble(something.get("count").toString());
-                    //String get_time = something.getTime();
-                //data sent = new data(sending,date_data);
-                //sendData(sent,date_data);
-                //double get_count = something.getCount();
-                int count = (int)sending;
-                setKey(count);
+                if(something != null) {
+                    double sending = Double.parseDouble(something.get("count").toString()) + 1.0;
+
+                    int count = (int) sending;
+                    setKey(count);
+                }
                 data send_data = new data(1, date_data );
                 //setKey(getKey() + 1);
                 data send_key_count = new data(getKey(),date_data);
@@ -84,29 +79,6 @@ public class button_activity extends AppCompatActivity {
 
         });
 
-
-
-
-
-
-
-/*
-        data send_data = new data(1, date_data );
-        //setKey(getKey() + 1);
-        data send_key_count = new data(getKey(),date_data);
-        data send_test = new data (1,get__text());
-        sendData(send_data,date_data);
-
-        sendData_(send_key_count,date_data);
-        sendData__(send_test);
-
-        Intent intent = new Intent(getApplication(), show_image.class);
-        //intent.putExtra("DATA", barcodeResult.getText());
-
-        intent.putExtra("NAME",getName());
-        intent.putExtra("KEY",getKey());
-        startActivity(intent);
-        */
     }
 
     public void sendData(data _data,String date) {

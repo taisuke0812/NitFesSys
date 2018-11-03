@@ -47,7 +47,7 @@ public class Authorized extends AppCompatActivity {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Intent go = new Intent(getApplication(), Main2Activity.class);
+
                 Intent back = new Intent(getApplication(), MainActivity.class);
                 Map<String, Object> something = (Map<String, Object>) dataSnapshot.getValue();
                 String correct_id = something.get("id").toString();
@@ -55,7 +55,8 @@ public class Authorized extends AppCompatActivity {
 
                 if (correct_id.equals(getId())) {
                     if (correct_pass.equals(getPass())){
-                        go.putExtra("NAME",correct_id);
+                        Intent go = new Intent(getApplication(), Main2Activity.class);
+                        go.putExtra("NAME",getId());
                         startActivity(go);
                     } else
                         startActivity(back);
@@ -76,8 +77,8 @@ public class Authorized extends AppCompatActivity {
     public void setId(String id_){this.id = id_;}
     public void setPass(String pass_){this.pass = pass_;}
 
-    public String getId(){return this.id;}
-    public String getPass(){return this.pass;}
+    public String getId(){return id;}
+    public String getPass(){return pass;}
 
 
 
