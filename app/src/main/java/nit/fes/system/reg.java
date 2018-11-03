@@ -12,10 +12,12 @@ import java.util.Map;
 public class reg {
     private String id;
     private String pass;
+    private String pro;
 
-    public reg(String id,String pass){
-        this.id = id;
-        this.pass = pass;
+    public reg(String id_,String pass_,String pro_){
+        this.id = id_;
+        this.pass = pass_;
+        this.pro = pro_;
     }
     public String getId(){
         return id;
@@ -31,12 +33,15 @@ public class reg {
     public void setPass(String pass){
         this.pass = pass;
     }
+    public void setPro(String pro_){this.pro = pro_;}
+    public String getPro(){return this.pro;}
 
     @Exclude
     public Map<String,String> toMap(){
         HashMap<String,String> hashmap = new HashMap();
         hashmap.put("id",id);
         hashmap.put("pass",pass);
+        hashmap.put("pro",pro);
         return hashmap;
     }
 }
