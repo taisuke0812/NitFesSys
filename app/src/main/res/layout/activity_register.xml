@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="373dp"
-        android:layout_height="551dp"
+        android:layout_height="620dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -18,15 +18,15 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/dispriction"
             android:layout_width="wrap_content"
-            android:layout_height="83dp"
+            android:layout_height="wrap_content"
             android:text="新規登録" />
 
         <TextView
@@ -64,15 +64,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="当たりの出る確率"
-            android:textSize="30sp"/>
+            android:textSize="30sp" />
 
         <EditText
             android:id="@+id/input_pro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="10%なら0.1と入力" />
+            android:hint="10%なら0.1と入力"
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/text_token"
@@ -91,19 +91,13 @@
 
         <Button
             android:id="@+id/register_button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal|center"
             android:text="登録" />
-
-        <TextView
-            android:id="@+id/none_text"
-            android:layout_width="wrap_content"
-            android:layout_height="81dp" />
 
         <Button
             android:id="@+id/back"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back" />
 
