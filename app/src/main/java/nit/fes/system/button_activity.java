@@ -39,25 +39,41 @@ public class button_activity extends AppCompatActivity {
         setNum(shop_num);
 
         Date date = new Date();
-        String date_data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-
+        final String date_data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        //key_intent = i.getIntExtra("KEY",0);
+        //setKey(key_intent);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference(getName() + "/" + String.valueOf(getNum()) + "/" +date_data.substring(8,10) + "/" + date_data.substring(11,13) + "/key");
 
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Map<String,Object> something = (Map<String,Object>)dataSnapshot.getValue();
-                int sending = (int)Double.parseDouble((String)something.get("count"));
+                double sending = Double.parseDouble(something.get("count").toString()) + 1.0;
                 //data sent = new data(100,sending.getTime());
                 //double get_count = Double.parseDouble(something.get("count").toString());
                     //String get_time = something.getTime();
-
+                //data sent = new data(sending,date_data);
+                //sendData(sent,date_data);
                 //double get_count = something.getCount();
-                //int count = (int)get_count;
-                setKey(sending);
+                int count = (int)sending;
+                setKey(count);
+                data send_data = new data(1, date_data );
+                //setKey(getKey() + 1);
+                data send_key_count = new data(getKey(),date_data);
+                data send_test = new data (1,get__text());
+                sendData(send_data,date_data);
+
+                sendData_(send_key_count,date_data);
+                sendData__(send_test);
+
+                Intent intent = new Intent(getApplication(), show_image.class);
+                intent.putExtra("NAME",getName());
+                intent.putExtra("KEY",getKey());
+                startActivity(intent);
 
 
             }
@@ -65,16 +81,18 @@ public class button_activity extends AppCompatActivity {
             @Override
             public void onCancelled(final DatabaseError databaseError) {
             }
+
         });
 
 
 
-        //key_intent = i.getIntExtra("KEY",0);
-        //setKey(key_intent);
 
 
+
+
+/*
         data send_data = new data(1, date_data );
-        setKey(getKey() + 1);
+        //setKey(getKey() + 1);
         data send_key_count = new data(getKey(),date_data);
         data send_test = new data (1,get__text());
         sendData(send_data,date_data);
@@ -84,9 +102,11 @@ public class button_activity extends AppCompatActivity {
 
         Intent intent = new Intent(getApplication(), show_image.class);
         //intent.putExtra("DATA", barcodeResult.getText());
+
         intent.putExtra("NAME",getName());
         intent.putExtra("KEY",getKey());
         startActivity(intent);
+        */
     }
 
     public void sendData(data _data,String date) {
@@ -118,10 +138,10 @@ public class button_activity extends AppCompatActivity {
     public String getName(){ return this.name; }
 
     public void setKey(int intent_key){
-        this.key = intent_key;
+        key = intent_key;
     }
     public int  getKey(){
-        return this.key;
+        return key;
     }
     public String get__text(){return this.__text;}
     public void set__text(String text){this.__text = text;}

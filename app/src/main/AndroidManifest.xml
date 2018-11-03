@@ -4,12 +4,9 @@
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
 
-
-
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
-
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -48,7 +45,7 @@
         <activity android:name=".button_activity" />
         <activity android:name=".show_image" />
         <activity android:name=".Register" />
-        <activity android:name=".Authorized"></activity>
+        <activity android:name=".Authorized" />
     </application>
 
 </manifest>
