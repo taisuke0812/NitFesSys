@@ -74,8 +74,8 @@ public class Register extends AppCompatActivity {
 
 
     public void sendData(reg _data) {
-        DatabaseReference dataref = FirebaseDatabase.getInstance().getReference("register/" + getName());
-        String key = dataref.push().getKey();
+        DatabaseReference dataref = FirebaseDatabase.getInstance().getReference("register");
+        String key = getName();
         Map<String, Object> map = new HashMap<>();
         map.put(key, _data.toMap());
         dataref.updateChildren(map);
