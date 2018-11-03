@@ -1,3 +1,4 @@
+
 package nit.fes.system;
 
 import android.content.Intent;
@@ -22,8 +23,6 @@ import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 
 public class Authorized extends AppCompatActivity {
 
-    private List<String> id_data = new ArrayList<String>();
-    private List<String> pass_data = new ArrayList<String>();
     private String id;
     private String pass;
     public int Case;
@@ -34,99 +33,54 @@ public class Authorized extends AppCompatActivity {
 
         Intent i = getIntent();
 
-        if(i.getStringExtra("id") != null) {
-           setId(i.getStringExtra("id"));
+        if (i.getStringExtra("id") != null) {
+            setId(i.getStringExtra("id"));
         }
-        if(i.getStringExtra("pass") != null) {
+        if (i.getStringExtra("pass") != null) {
             setPass(i.getStringExtra("pass"));
         }
 
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("register");
+        DatabaseReference myRef = database.getReference("register/" + getId());
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String regex = "\\[(.+?)\\]";
-                String regex2 = "\\[[.+?]\\]";
-                Map<String, Object> map = new HashMap<>();
-                map.put("id",dataSnapshot.getValue(Object.class));
-                String text = map.get("id").toString();
-                setId_data(matching(regex,text));
+                Intent go = new Intent(getApplication(), Main2Activity.class);
+                Intent back = new Intent(getApplication(), MainActivity.class);
+                Map<String, Object> something = (Map<String, Object>) dataSnapshot.getValue();
+                String correct_id = something.get("id").toString();
+                String correct_pass = something.get("pass").toString();
 
-                map.put("pass",dataSnapshot.getValue(Object.class));
-                String text_ = map.get("pass").toString();
-                setPass_data(matching(regex2,text_));
-            }
+                if (correct_id.equals(getId())) {
+                    if (correct_pass.equals(getPass())){
+                        go.putExtra("NAME",correct_id);
+                        startActivity(go);
+                    } else
+                        startActivity(back);
+                    }
+                }
+
             @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
+            public void onCancelled(final DatabaseError databaseError) {
             }
+
         });
 
-        Case = Match(this.getId(),this.getPass());
-        Intent intent = new Intent(getApplication(), Main2Activity.class);
-        if(Case == 0){
-            //startActivity(intent);
-        }
-        if(Case == 2){
-            startActivity(intent);
-        }
+
+
     }
 
-    public void setId_data(List<String> id){
-        this.id_data = id;
-    }
-    public void setPass_data(List<String> pass){
-        this.pass_data = pass;
-    }
+
     public void setId(String id_){this.id = id_;}
     public void setPass(String pass_){this.pass = pass_;}
 
-    public List<String> getId_data(){
-        return this.id_data;
-    }
-    public List<String> getPass_data(){
-        return this.pass_data;
-    }
     public String getId(){return this.id;}
     public String getPass(){return this.pass;}
 
 
 
-    public List<String> matching(String regex, String target) {
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(target);
-        StringBuilder buff = new StringBuilder();
-        List<String> array = new ArrayList<String>();
-        while(matcher.find()) {
-            array.add(matcher.group(1));
-        }
-        return array;
-    }
 
-
-    public int Match(String id, String pass) {
-
-        int sum = 0;
-
-        for (String string : this.getId_data()) {
-            if (string.equals(id)) {
-                sum = sum + 1;
-            }
-        }
-
-        for (String string_ : this.getPass_data()) {
-            if (string_.equals(pass)) {
-                sum = sum + 1;
-            }
-        }
-
-        return sum;
-    }
 }
 
