@@ -57,9 +57,11 @@ public class Authorized extends AppCompatActivity {
                 if (correct_id.equals(getId())) {
                     if (correct_pass.equals(getPass())){
                         int num = Integer.parseInt(num_kind);
+
                         if(num == 1){
                             Intent intent_1 = new Intent(getApplication(),home_1.class);
                             intent_1.putExtra("NAME",getId());
+
                             startActivity(intent_1);
                         }else if(num == 2){
 
@@ -68,9 +70,9 @@ public class Authorized extends AppCompatActivity {
                         }else if(num == 4){
 
                         }
-                        Intent go = new Intent(getApplication(), Main2Activity.class);
-                        go.putExtra("NAME",getId());
-                        startActivity(go);
+                        //Intent go = new Intent(getApplication(), Main2Activity.class);
+                        //go.putExtra("NAME",getId());
+                        //startActivity(go);
                     } else
                         startActivity(back);
                     }

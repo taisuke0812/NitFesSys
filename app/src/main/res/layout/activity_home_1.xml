@@ -84,10 +84,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
         android:layout_marginBottom="161dp"
+        android:layout_toEndOf="@+id/logout"
         android:text="個数を選択"
         android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/test"
+        android:layout_width="72dp"
+        android:layout_height="53dp"
+        android:layout_alignTop="@+id/textView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginRight="74dp"
+        android:text="" />
 
 
 </RelativeLayout>

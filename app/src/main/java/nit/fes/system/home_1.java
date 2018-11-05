@@ -22,12 +22,12 @@ import java.util.ArrayList;
 
 public class home_1 extends AppCompatActivity {
     private String name = "error";
-    private int count = 0;
+    public int count;
     private int key;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(nit.fes.system.R.layout.activity_main2);
+        setContentView(R.layout.activity_home_1);
         String id_name = "001";
         Intent i = getIntent();
         if(i.getStringExtra("NAME") != null) {
@@ -58,9 +58,7 @@ public class home_1 extends AppCompatActivity {
         Spinner spinner = findViewById(R.id.spinner);
 
         // ArrayAdapter
-        ArrayAdapter<String> adapter
-                = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, spinnerItems);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerItems);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -71,11 +69,13 @@ public class home_1 extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             //　アイテムが選択された時
             @Override
-            public void onItemSelected(AdapterView<?> parent,
-                                       View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Spinner spinner = (Spinner)parent;
                 String item = (String)spinner.getSelectedItem();
-                setCount(Integer.parseInt(item));
+                //たぶんこの書き方は動作しない
+                //countがうまく更新される方法を考えたい
+                count = Integer.parseInt(item);
+
             }
 
             //　アイテムが選択されなかった
@@ -83,7 +83,7 @@ public class home_1 extends AppCompatActivity {
                 //悲しいね
             }
         });
-
+        
         findViewById(nit.fes.system.R.id.button4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
