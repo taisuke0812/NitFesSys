@@ -19,6 +19,7 @@ import java.util.Map;
 public class button_activity extends AppCompatActivity {
     private String name = "error";
     private int key = 0;
+    private int count = 0;
     private String __text;//for test
     private int num;
     @Override
@@ -30,6 +31,10 @@ public class button_activity extends AppCompatActivity {
         if(i.getStringExtra("NAME") != null) {
             id_name = i.getStringExtra("NAME");
             setName(id_name);
+        }
+        if(i.getStringExtra("count") != null) {
+            String count_ = i.getStringExtra("count");
+            setCount(Integer.parseInt(count_));
         }
 
 
@@ -53,10 +58,10 @@ public class button_activity extends AppCompatActivity {
                 if(something != null) {
                     double sending = Double.parseDouble(something.get("count").toString()) + 1.0;
 
-                    int count = (int) sending;
-                    setKey(count);
+                    int count__ = (int) sending;
+                    setKey(count__);
                 }
-                data send_data = new data(1, date_data );
+                data send_data = new data(Double.parseDouble(String.valueOf(getCount())), date_data );
                 //setKey(getKey() + 1);
                 data send_key_count = new data(getKey(),date_data);
                 data send_test = new data (1,get__text());
@@ -120,4 +125,7 @@ public class button_activity extends AppCompatActivity {
 
     public void setNum(int _num){this.num = _num;}
     public int getNum(){return this.num;}
+
+    public void setCount(int _count){this.num = _count;}
+    public int getCount(){return this.count;}
 }

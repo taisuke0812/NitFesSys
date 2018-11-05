@@ -46,6 +46,9 @@
         <activity android:name=".show_image" />
         <activity android:name=".Register" />
         <activity android:name=".Authorized" />
+        <activity android:name=".Display" />
+        <activity android:name=".home_1" />
+        <activity android:name=".home_2"></activity>
     </application>
 
 </manifest>
