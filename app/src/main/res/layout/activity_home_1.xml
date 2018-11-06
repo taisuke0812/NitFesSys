@@ -103,20 +103,20 @@
 
     <TextView
         android:id="@+id/textView_"
-        android:layout_width="163dp"
-        android:layout_height="40dp"
+        android:layout_width="149dp"
+        android:layout_height="46dp"
         android:layout_alignTop="@+id/textView"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="23dp"
-        android:layout_marginLeft="23dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginLeft="63dp"
         android:layout_marginTop="-1dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
         android:layout_toEndOf="@+id/textView"
         android:layout_toRightOf="@+id/textView"
-        android:textSize="25sp"
-        android:text="種類を選択" />
+        android:text="種類を選択"
+        android:textSize="25sp" />
 
 
 </RelativeLayout>
