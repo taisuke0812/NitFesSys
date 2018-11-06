@@ -22,6 +22,7 @@ public class button_activity extends AppCompatActivity {
     private int count;
     private String __text;//for test
     private int num;
+    private int kind;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +37,12 @@ public class button_activity extends AppCompatActivity {
         int c_ = i.getIntExtra("count",2);
         setCount(c_);
 
-        int shop_num = i.getIntExtra("Num",0);
+        int shop_num = i.getIntExtra("num",0);
         setNum(shop_num);
+
+        int kind_ = i.getIntExtra("kind",0);
+        setKind(kind_);
+
 
         Date date = new Date();
         final String date_data = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
@@ -45,7 +50,7 @@ public class button_activity extends AppCompatActivity {
         //setKey(key_intent);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(getName() + "/" + String.valueOf(getNum()) + "/" +date_data.substring(8,10) + "/" + date_data.substring(11,13) + "/key");
+        DatabaseReference myRef = database.getReference(getName() + "/" + String.valueOf(getKind()) + "/" +date_data.substring(8,10) + "/" + date_data.substring(11,13) + "/key");
 
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -85,14 +90,14 @@ public class button_activity extends AppCompatActivity {
     }
 
     public void sendData(data _data,String date) {
-        DatabaseReference dataref = FirebaseDatabase.getInstance().getReference(getName() + "/"+ String.valueOf(getNum()) + "/" +date.substring(8,10) + "/" + date.substring(11,13));
+        DatabaseReference dataref = FirebaseDatabase.getInstance().getReference(getName() + "/"+ String.valueOf(getKind()) + "/" +date.substring(8,10) + "/" + date.substring(11,13));
         String key =  String.valueOf(this.getKey());
         Map<String, Object> map = new HashMap<>();
         map.put(key, _data.toMap());
         dataref.updateChildren(map);
     }
     public void sendData_(data _data,String date) {
-        DatabaseReference dataref = FirebaseDatabase.getInstance().getReference(getName() + "/"+ String.valueOf(getNum()) + "/" + date.substring(8,10) + "/" + date.substring(11,13));
+        DatabaseReference dataref = FirebaseDatabase.getInstance().getReference(getName() + "/"+ String.valueOf(getKind()) + "/" + date.substring(8,10) + "/" + date.substring(11,13));
         String key = "key";
         Map<String, Object> map = new HashMap<>();
         map.put(key, _data.toMap());
@@ -126,4 +131,11 @@ public class button_activity extends AppCompatActivity {
 
     public void setCount(int _count){this.count = _count;}
     public int getCount(){return this.count;}
+
+    public void setKind(int kind_){
+        this.kind = kind_;
+    }
+    public int getKind(){
+        return this.kind;
+    }
 }

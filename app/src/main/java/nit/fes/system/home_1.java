@@ -24,6 +24,7 @@ public class home_1 extends AppCompatActivity {
     private String name = "error";
     private int count = 1;
     private int key;
+    private int kind;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,17 +55,20 @@ public class home_1 extends AppCompatActivity {
         }
 
         String spinnerItems[] = {"1","2","3","4","5"};
-
+        String spinnerItems_[] = {"0","1","2","3","4","5"};
         final Spinner spinner = findViewById(R.id.spinner);
+        final Spinner spinner_ = findViewById(R.id.spinner_);
 
         // ArrayAdapter
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerItems);
-
+        ArrayAdapter<String> adapter_ = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerItems_);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter_.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
 
         // spinner に adapter をセット
         spinner.setAdapter(adapter);
-
+        spinner_.setAdapter(adapter_);
         // リスナーを登録
         /*
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -92,10 +96,13 @@ public class home_1 extends AppCompatActivity {
                 //Intent intent1 = new Intent(getApplication(), QrCodeReadInViewActivity.class);
                 String item = spinner.getSelectedItem().toString();
                 int item_ = Integer.parseInt(item);
+                String kind_ = spinner_.getSelectedItem().toString();
+                int _kind_ = Integer.parseInt(kind_);
                 Intent intent1 = new Intent(getApplication(), button_activity.class);
                 intent1.putExtra("NAME",getName());
                 intent1.putExtra("KEY",getKey());
                 intent1.putExtra("count",item_);
+                intent1.putExtra("kind",_kind_);
                 //intent1.putExtra("count",3);
                 startActivity(intent1);
             }
@@ -152,5 +159,12 @@ public class home_1 extends AppCompatActivity {
     }
     public int  getKey(){
         return key;
+    }
+
+    public int getKind(){
+        return this.kind;
+    }
+    public void setKind(int kind_){
+        this.kind = kind_;
     }
 }
