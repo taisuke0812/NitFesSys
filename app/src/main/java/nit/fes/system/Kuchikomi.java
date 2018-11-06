@@ -33,7 +33,7 @@ public class Kuchikomi extends AppCompatActivity {
         findViewById(nit.fes.system.R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), Main2Activity.class);
+                Intent intent = new Intent(getApplication(), home_1.class);
                 intent.putExtra("NAME",getName());
                 startActivity(intent);
             }

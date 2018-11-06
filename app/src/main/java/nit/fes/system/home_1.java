@@ -41,7 +41,7 @@ public class home_1 extends AppCompatActivity {
 
         String img = "img_";
         String file = img + id_name + ".jpg";
-        ImageView image = findViewById(nit.fes.system.R.id.view);
+        ImageView image = findViewById(nit.fes.system.R.id.image);
 
 
         AssetManager assets = getResources().getAssets();
@@ -90,7 +90,7 @@ public class home_1 extends AppCompatActivity {
         */
 
 
-        findViewById(nit.fes.system.R.id.button4).setOnClickListener(new View.OnClickListener() {
+        findViewById(nit.fes.system.R.id.buy).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Intent intent1 = new Intent(getApplication(), QrCodeReadInViewActivity.class);
@@ -107,7 +107,7 @@ public class home_1 extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
-        findViewById(nit.fes.system.R.id.button3).setOnClickListener(new View.OnClickListener() {
+        findViewById(nit.fes.system.R.id.review).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent2 = new Intent(getApplication(), Kuchikomi.class);
@@ -117,9 +117,10 @@ public class home_1 extends AppCompatActivity {
 
             }
         });
-        findViewById(nit.fes.system.R.id.button2).setOnClickListener(new View.OnClickListener() {
+        findViewById(nit.fes.system.R.id.graph).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //グラフ表示
                 Intent intent3 = new Intent(getApplication(), Display.class);
                 intent3.putExtra("NAME",getName());
                 intent3.putExtra("KEY",getKey());
@@ -131,9 +132,16 @@ public class home_1 extends AppCompatActivity {
         findViewById(nit.fes.system.R.id.logout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //ログアウト処理を施す
                 Intent intent4 = new Intent(getApplication(), MainActivity.class);
                 //intent4.putExtra("NAME",getName());
                 startActivity(intent4);
+            }
+        });
+        findViewById(nit.fes.system.R.id.history).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //購入履歴ページを見れるようにする
             }
         });
 

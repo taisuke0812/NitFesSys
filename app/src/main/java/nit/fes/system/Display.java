@@ -1,44 +1,45 @@
 package nit.fes.system;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 public class Display extends AppCompatActivity {
-
+    private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_display);
+        setContentView(R.layout.activity_display);
+        String id_name;
+        Intent i = getIntent();
+        if(i.getStringExtra("NAME") != null) {
+            id_name = i.getStringExtra("NAME");
+            setName(id_name);
+        }
 
-        // リニアレイアウトの設定
-        LinearLayout layout = new LinearLayout(this);
-        // orientationは垂直方向
-        layout.setOrientation(LinearLayout.VERTICAL);
+        WebView webview = findViewById(nit.fes.system.R.id.web_view);
+        webview.loadUrl("https://b1.numazu-nit.com/");
+        webview.setWebViewClient(new WebViewClient());
 
-        // Layoutの横・縦幅の指定
-        layout.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT));
+        webview.setVerticalScrollBarEnabled(true);
 
-        setContentView(layout);
 
-        RadioButton radio1 = new RadioButton(this);
-        RadioButton radio2 = new RadioButton(this);
-        RadioButton radio3 = new RadioButton(this);
-        RadioButton radio4 = new RadioButton(this);
-
-        radio1.setText("taisuke");
-        radio2.setText("kanazawa");
-        radio3.setText("murakami");
-
-        RadioGroup radio_group = new RadioGroup(this);
-        radio_group.addView(radio1);
-        radio_group.addView(radio2);
-        radio_group.addView(radio3);
-        radio_group.addView(radio4);
-        layout.addView(radio_group);
+        findViewById(nit.fes.system.R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), home_1.class);
+                intent.putExtra("NAME",getName());
+                startActivity(intent);
+            }
+        });
     }
+
+    public void setName(String _name){this.name = _name;}
+    public String getName(){return this.name;}
 }
