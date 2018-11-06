@@ -48,7 +48,8 @@
         <activity android:name=".Authorized" />
         <activity android:name=".Display" />
         <activity android:name=".home_1" />
-        <activity android:name=".home_2"></activity>
+        <activity android:name=".home_2" />
+        <activity android:name=".SendData"></activity>
     </application>
 
 </manifest>

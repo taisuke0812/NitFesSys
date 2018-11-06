@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class home_1 extends AppCompatActivity {
     private String name = "error";
-    public int count;
+    public int count = 1;
     private int key;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,22 +68,23 @@ public class home_1 extends AppCompatActivity {
         // リスナーを登録
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             //　アイテムが選択された時
+            public int _count;
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Spinner spinner = (Spinner)parent;
                 String item = (String)spinner.getSelectedItem();
                 //たぶんこの書き方は動作しない
                 //countがうまく更新される方法を考えたい
-                count = Integer.parseInt(item);
 
             }
-
             //　アイテムが選択されなかった
             public void onNothingSelected(AdapterView<?> parent) {
                 //悲しいね
             }
         });
-        
+        String item = (String)spinner.getSelectedItem();
+        setCount(Integer.parseInt(item));
+
         findViewById(nit.fes.system.R.id.button4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
