@@ -124,8 +124,6 @@ public class home_1 extends AppCompatActivity {
                 Intent intent3 = new Intent(getApplication(), Display.class);
                 intent3.putExtra("NAME",getName());
                 intent3.putExtra("KEY",getKey());
-                int num = getCount();
-                intent3.putExtra("Count",getCount());
                 startActivity(intent3);
             }
         });
