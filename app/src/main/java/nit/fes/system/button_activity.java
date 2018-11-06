@@ -19,7 +19,7 @@ import java.util.Map;
 public class button_activity extends AppCompatActivity {
     private String name = "error";
     private int key = 0;
-    private int count = 0;
+    private int count;
     private String __text;//for test
     private int num;
     @Override
@@ -32,11 +32,9 @@ public class button_activity extends AppCompatActivity {
             id_name = i.getStringExtra("NAME");
             setName(id_name);
         }
-        if(i.getStringExtra("count") != null) {
-            String count_ = i.getStringExtra("count");
-            setCount(Integer.parseInt(count_));
-        }
 
+        int c_ = i.getIntExtra("count",2);
+        setCount(c_);
 
         int shop_num = i.getIntExtra("Num",0);
         setNum(shop_num);
@@ -61,7 +59,7 @@ public class button_activity extends AppCompatActivity {
                     int count__ = (int) sending;
                     setKey(count__);
                 }
-                data send_data = new data(Double.parseDouble(String.valueOf(getCount())), date_data );
+                data send_data = new data(getCount(), date_data );
                 //setKey(getKey() + 1);
                 data send_key_count = new data(getKey(),date_data);
                 data send_test = new data (1,get__text());
@@ -115,10 +113,10 @@ public class button_activity extends AppCompatActivity {
     public String getName(){ return this.name; }
 
     public void setKey(int intent_key){
-        key = intent_key;
+        this.key = intent_key;
     }
     public int  getKey(){
-        return key;
+        return this.key;
     }
     public String get__text(){return this.__text;}
     public void set__text(String text){this.__text = text;}
@@ -126,6 +124,6 @@ public class button_activity extends AppCompatActivity {
     public void setNum(int _num){this.num = _num;}
     public int getNum(){return this.num;}
 
-    public void setCount(int _count){this.num = _count;}
+    public void setCount(int _count){this.count = _count;}
     public int getCount(){return this.count;}
 }
