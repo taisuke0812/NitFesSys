@@ -26,18 +26,23 @@ public class Authorized extends AppCompatActivity {
     private String id;
     private String pass;
     public int Case;
+    private double pro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(nit.fes.system.R.layout.activity_authorized);
 
         Intent i = getIntent();
-
+        String id_pro;
         if (i.getStringExtra("id") != null) {
             setId(i.getStringExtra("id"));
         }
         if (i.getStringExtra("pass") != null) {
             setPass(i.getStringExtra("pass"));
+        }
+        if(i.getStringExtra("pro") != null) {
+            id_pro = i.getStringExtra("pro");
+            setPro(Double.parseDouble(id_pro));
         }
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -58,6 +63,7 @@ public class Authorized extends AppCompatActivity {
                     if (correct_pass.equals(getPass())){
                         Intent intent_1 = new Intent(getApplication(),home_1.class);
                         intent_1.putExtra("NAME",getId());
+                        intent_1.putExtra("pro",getPro());
                         startActivity(intent_1);
                         //go.putExtra("NAME",getId());
                         //startActivity(go);
@@ -82,7 +88,8 @@ public class Authorized extends AppCompatActivity {
 
     public String getId(){return id;}
     public String getPass(){return pass;}
-
+    public void setPro(double pro_){this.pro = pro_;}
+    public double getPro(){return this.pro;}
 
 
 

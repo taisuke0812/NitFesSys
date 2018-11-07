@@ -10,16 +10,22 @@ import android.webkit.WebViewClient;
 public class Kuchikomi extends AppCompatActivity {
     private String name;
     private int key;
+    private double pro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(nit.fes.system.R.layout.activity_kuchikomi);
         int key_intent;
         String id_name;
+        String id_pro;
         Intent i = getIntent();
         if(i.getStringExtra("NAME") != null) {
             id_name = i.getStringExtra("NAME");
             setName(id_name);
+        }
+        if(i.getStringExtra("pro") != null) {
+            id_pro = i.getStringExtra("pro");
+            setPro(Double.parseDouble(id_pro));
         }
 
         key_intent = i.getIntExtra("KEY",0);
@@ -54,5 +60,7 @@ public class Kuchikomi extends AppCompatActivity {
     public int  getKey(){
         return this.key;
     }
+    public void setPro(double pro_){this.pro = pro_;}
+    public double getPro(){return this.pro;}
 
 }

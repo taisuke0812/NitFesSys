@@ -82,6 +82,7 @@ public class button_activity extends AppCompatActivity {
                 Intent intent = new Intent(getApplication(), show_image.class);
                 intent.putExtra("NAME",getName());
                 intent.putExtra("KEY",getKey());
+                intent.putExtra("pro",getPro());
                 startActivity(intent);
 
 

@@ -12,15 +12,22 @@ import android.widget.RadioGroup;
 
 public class Display extends AppCompatActivity {
     private String name;
+    private double pro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
         String id_name;
+        String id_pro;
         Intent i = getIntent();
         if(i.getStringExtra("NAME") != null) {
             id_name = i.getStringExtra("NAME");
             setName(id_name);
+        }
+
+        if(i.getStringExtra("pro") != null) {
+            id_pro = i.getStringExtra("pro");
+            setPro(Double.parseDouble(id_pro));
         }
 
         WebView webview = findViewById(nit.fes.system.R.id.web_view);
@@ -42,4 +49,6 @@ public class Display extends AppCompatActivity {
 
     public void setName(String _name){this.name = _name;}
     public String getName(){return this.name;}
+    public void setPro(double pro_){this.pro = pro_;}
+    public double getPro(){return this.pro;}
 }

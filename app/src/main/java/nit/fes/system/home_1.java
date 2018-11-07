@@ -25,11 +25,13 @@ public class home_1 extends AppCompatActivity {
     private int count = 1;
     private int key;
     private int kind;
+    private double pro;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_1);
         String id_name = "001";
+        String id_pro;
         Intent i = getIntent();
         if(i.getStringExtra("NAME") != null) {
             id_name = i.getStringExtra("NAME");
@@ -38,6 +40,11 @@ public class home_1 extends AppCompatActivity {
         int key_intent;
         key_intent = i.getIntExtra("KEY",0);
         setKey(key_intent);
+
+        if(i.getStringExtra("pro") != null) {
+            id_pro = i.getStringExtra("pro");
+            setPro(Double.parseDouble(id_pro));
+        }
 
         String img = "img_";
         String file = img + id_name + ".jpg";
@@ -103,6 +110,7 @@ public class home_1 extends AppCompatActivity {
                 intent1.putExtra("KEY",getKey());
                 intent1.putExtra("count",item_);
                 intent1.putExtra("kind",_kind_);
+                intent1.putExtra("pro",getPro());
                 //intent1.putExtra("count",3);
                 startActivity(intent1);
             }
@@ -113,6 +121,7 @@ public class home_1 extends AppCompatActivity {
                 Intent intent2 = new Intent(getApplication(), Kuchikomi.class);
                 intent2.putExtra("NAME",getName());
                 intent2.putExtra("KEY",getKey());
+                intent2.putExtra("pro",getPro());
                 startActivity(intent2);
 
             }
@@ -124,6 +133,7 @@ public class home_1 extends AppCompatActivity {
                 Intent intent3 = new Intent(getApplication(), Display.class);
                 intent3.putExtra("NAME",getName());
                 intent3.putExtra("KEY",getKey());
+                intent3.putExtra("pro",getPro());
                 startActivity(intent3);
             }
         });
@@ -173,4 +183,6 @@ public class home_1 extends AppCompatActivity {
     public void setKind(int kind_){
         this.kind = kind_;
     }
+    public void setPro(double pro_){this.pro = pro_;}
+    public double getPro(){return this.pro;}
 }
