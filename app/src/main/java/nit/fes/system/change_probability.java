@@ -21,7 +21,7 @@ public class change_probability extends AppCompatActivity {
     private String name;
     private int key;
     private String pass;
-    String pro;
+    private String pro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,44 +80,21 @@ public class change_probability extends AppCompatActivity {
                 if(input_pro.getText() != null){
                     SpannableStringBuilder ssb = (SpannableStringBuilder)input_pro.getText();
                     probability = ssb.toString();
+                    setPro(probability);
                 }
-                setPro(probability);
+
                 if(input_pass.getText() != null){
                     SpannableStringBuilder ssb_ = (SpannableStringBuilder)input_pro.getText();
                     password = ssb_.toString();
+                    setPass(password);
                 }
-                setPass(password);
 
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("register/" + getName());
-
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        Intent back = new Intent(getApplication(), MainActivity.class);
-                        Map<String, Object> something = (Map<String, Object>) dataSnapshot.getValue();
-                        String correct_pass = something.get("pass").toString();
-                        if(correct_pass.equals(getPass())){
-                            reg data = new reg(getName(),getPass(),getPro());
-                            DatabaseReference dataref_ = FirebaseDatabase.getInstance().getReference("register");
-                            String key = getName();
-                            Map<String, Object> map = new HashMap<>();
-                            map.put(key, data.toMap());
-                            dataref_.updateChildren(map);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(final DatabaseError databaseError) {
-                    }
-
-                });
-
-
-
-
+                reg data = new reg(getName(),getPass(),getPro());
+                DatabaseReference dataref_ = FirebaseDatabase.getInstance().getReference("register");
+                String key = getName();
+                Map<String, Object> map = new HashMap<>();
+                map.put(key, data.toMap());
+                dataref_.updateChildren(map);
 
                 Intent intent = new Intent(getApplication(), home_1.class);
                 intent.putExtra("NAME",getName());
@@ -143,16 +120,16 @@ public class change_probability extends AppCompatActivity {
     }
 
     public void setKey(int intent_key){
-        key = intent_key;
+        this.key = intent_key;
     }
     public int  getKey(){
-        return key;
+        return this.key;
     }
     public void setName(String intent_text){
-        name = intent_text;
+        this.name = intent_text;
     }
     public String getName(){
-        return name;
+        return this.name;
     }
     public void setPass(String pass_){this.pass = pass_;}
     public String getPass(){return this.pass;}
