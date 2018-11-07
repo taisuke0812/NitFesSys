@@ -49,7 +49,10 @@
         <activity android:name=".Display" />
         <activity android:name=".home_1" />
         <activity android:name=".home_2" />
-        <activity android:name=".SendData"></activity>
+        <activity android:name=".SendData" />
+        <activity android:name=".show_image_h" />
+        <activity android:name=".change_probability" />
+        <activity android:name=".history"></activity>
     </application>
 
 </manifest>

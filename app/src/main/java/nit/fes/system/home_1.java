@@ -41,10 +41,6 @@ public class home_1 extends AppCompatActivity {
         key_intent = i.getIntExtra("KEY",0);
         setKey(key_intent);
 
-        if(i.getStringExtra("pro") != null) {
-            id_pro = i.getStringExtra("pro");
-            setPro(Double.parseDouble(id_pro));
-        }
 
         String img = "img_";
         String file = img + id_name + ".jpg";
@@ -76,26 +72,6 @@ public class home_1 extends AppCompatActivity {
         // spinner に adapter をセット
         spinner.setAdapter(adapter);
         spinner_.setAdapter(adapter_);
-        // リスナーを登録
-        /*
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            //　アイテムが選択された時
-            public int _count;
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Spinner spinner = (Spinner)parent;
-                String item = (String)spinner.getSelectedItem();
-                //たぶんこの書き方は動作しない
-                //countがうまく更新される方法を考えたい
-
-            }
-            //　アイテムが選択されなかった
-            public void onNothingSelected(AdapterView<?> parent) {
-                //悲しいね
-            }
-        });
-        */
-
 
         findViewById(nit.fes.system.R.id.buy).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,8 +109,17 @@ public class home_1 extends AppCompatActivity {
                 Intent intent3 = new Intent(getApplication(), Display.class);
                 intent3.putExtra("NAME",getName());
                 intent3.putExtra("KEY",getKey());
-                intent3.putExtra("pro",getPro());
                 startActivity(intent3);
+            }
+        });
+        findViewById(nit.fes.system.R.id.setting).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //グラフ表示
+                Intent intent5 = new Intent(getApplication(), change_probability.class);
+                intent5.putExtra("NAME",getName());
+                intent5.putExtra("KEY",getKey());
+                startActivity(intent5);
             }
         });
         findViewById(nit.fes.system.R.id.logout).setOnClickListener(new View.OnClickListener() {
@@ -159,14 +144,12 @@ public class home_1 extends AppCompatActivity {
     public void setName(String intent_text){
         name = intent_text;
     }
-
     public String getName(){
         return name;
     }
     public void setCount(int a){
         this.count = a;
     }
-
     public int getCount(){
         return this.count;
     }

@@ -23,10 +23,6 @@ public class Kuchikomi extends AppCompatActivity {
             id_name = i.getStringExtra("NAME");
             setName(id_name);
         }
-        if(i.getStringExtra("pro") != null) {
-            id_pro = i.getStringExtra("pro");
-            setPro(Double.parseDouble(id_pro));
-        }
 
         key_intent = i.getIntExtra("KEY",0);
         setKey(key_intent);

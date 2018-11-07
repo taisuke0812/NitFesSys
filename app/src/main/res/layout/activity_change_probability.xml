@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".change_probability">
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="551dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/text_none"
+            android:layout_width="wrap_content"
+            android:layout_height="61dp"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/dis_present"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:text="現在の確率"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/probability"
+            android:layout_width="100dp"
+            android:layout_height="54dp"
+            android:text=""
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/dis_next"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:text="修正後の確率を入力"
+            android:textSize="26sp" />
+
+        <EditText
+            android:id="@+id/input_pro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="(例)0.2"
+            android:inputType="textPersonName"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/dis_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:text="パスワードを入力"
+            android:textSize="26sp" />
+
+        <EditText
+            android:id="@+id/input_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPersonName"
+            android:textSize="26sp" />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修正" />
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

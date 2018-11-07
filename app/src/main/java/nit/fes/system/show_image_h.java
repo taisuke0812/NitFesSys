@@ -11,14 +11,14 @@ import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 import java.util.Random;
 
-public class show_image extends AppCompatActivity {
+public class show_image_h extends AppCompatActivity {
     private String name;
     private int key;
     private double pro = 0.2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(nit.fes.system.R.layout.activity_show_image);
+        setContentView(nit.fes.system.R.layout.activity_show_image_h);
         String id_name;
         int key_intent;
         String id_pro;
@@ -33,8 +33,7 @@ public class show_image extends AppCompatActivity {
         setKey(key_intent);
         ImageView imageView = (ImageView) findViewById(nit.fes.system.R.id.gifView);
         GlideDrawableImageViewTarget target = new GlideDrawableImageViewTarget(imageView);
-
-        Glide.with(this).load(nit.fes.system.R.raw.slot).into(target);
+        Glide.with(this).load(nit.fes.system.R.raw.slot_).into(target);
 
         findViewById(nit.fes.system.R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override

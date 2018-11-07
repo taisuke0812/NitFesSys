@@ -40,10 +40,7 @@ public class Authorized extends AppCompatActivity {
         if (i.getStringExtra("pass") != null) {
             setPass(i.getStringExtra("pass"));
         }
-        if(i.getStringExtra("pro") != null) {
-            id_pro = i.getStringExtra("pro");
-            setPro(Double.parseDouble(id_pro));
-        }
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("register/" + getId());

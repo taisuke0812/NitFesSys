@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class button_activity extends AppCompatActivity {
     private String name = "error";
@@ -36,10 +37,6 @@ public class button_activity extends AppCompatActivity {
             setName(id_name);
         }
 
-        if(i.getStringExtra("pro") != null) {
-            id_pro = i.getStringExtra("pro");
-            setPro(Double.parseDouble(id_pro));
-        }
         int c_ = i.getIntExtra("count",2);
         setCount(c_);
 
@@ -79,12 +76,43 @@ public class button_activity extends AppCompatActivity {
                 sendData_(send_key_count,date_data);
                 sendData__(send_test);
 
-                Intent intent = new Intent(getApplication(), show_image.class);
-                intent.putExtra("NAME",getName());
-                intent.putExtra("KEY",getKey());
-                intent.putExtra("pro",getPro());
-                startActivity(intent);
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef_ = database.getReference("register/" + getName());
+                myRef_.addListenerForSingleValueEvent(new ValueEventListener() {
 
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        Map<String, Object> something = (Map<String, Object>) dataSnapshot.getValue();
+                        if (something != null) {
+                            double prob = Double.parseDouble(something.get("pro").toString());
+                            Intent intent = new Intent(getApplication(), show_image.class);
+                            intent.putExtra("NAME",getName());
+                            intent.putExtra("KEY",getKey());
+                            intent.putExtra("pro",0.2);
+                            Intent _intent = new Intent(getApplication(), show_image_h.class);
+                            _intent.putExtra("NAME",getName());
+                            _intent.putExtra("KEY",getKey());
+                            _intent.putExtra("pro",0.2);
+
+                            Random rand = new Random();
+                            int sum = 0;
+                            sum = rand.nextInt(101);
+                            double pro_count = 100*prob;
+                            if((double)sum < pro_count) {
+                                startActivity(intent);
+                            }else{
+                                startActivity(_intent);
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(final DatabaseError databaseError) {
+                    }
+
+                });
 
             }
 
