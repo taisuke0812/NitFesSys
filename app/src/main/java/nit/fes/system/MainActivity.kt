@@ -48,6 +48,9 @@ class MainActivity : AppCompatActivity() {
             val pass = editText {
                 hint = "password"
             }
+            val pro = editText {
+                hint = "当たりの出る確率"
+            }
 
             button("Login!") {
                 onClick {

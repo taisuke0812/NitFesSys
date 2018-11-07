@@ -11,8 +11,8 @@ android {
         applicationId "nit.fes.system"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 17
-        versionName "17.0"
+        versionCode 21
+        versionName "21.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
