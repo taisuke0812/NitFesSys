@@ -77,29 +77,36 @@ public class change_probability extends AppCompatActivity {
                 EditText input_pass = findViewById(R.id.input_pass);
                 String probability = "";
                 String password = "";
-                if(input_pro.getText() != null){
-                    SpannableStringBuilder ssb = (SpannableStringBuilder)input_pro.getText();
+                if(input_pro.getText() != null) {
+                    SpannableStringBuilder ssb = (SpannableStringBuilder) input_pro.getText();
                     probability = ssb.toString();
                     setPro(probability);
+                    if (input_pass.getText() != null) {
+                        SpannableStringBuilder ssb_ = (SpannableStringBuilder) input_pro.getText();
+                        password = ssb_.toString();
+                        setPass(password);
+
+                        if(getPass()=="" || getName()==""){
+                            Intent intent_ = new Intent(getApplication(), home_1.class);
+                            intent_.putExtra("NAME", getName());
+                            intent_.putExtra("KEY", getKey());
+                            startActivity(intent_);
+
+                        }else {
+                            reg data = new reg(getName(), getPass(), getPro());
+                            DatabaseReference dataref_ = FirebaseDatabase.getInstance().getReference("register");
+                            String key = getName();
+                            Map<String, Object> map = new HashMap<>();
+                            map.put(key, data.toMap());
+                            dataref_.updateChildren(map);
+
+                            Intent intent = new Intent(getApplication(), home_1.class);
+                            intent.putExtra("NAME", getName());
+                            intent.putExtra("KEY", getKey());
+                            startActivity(intent);
+                        }
+                    }
                 }
-
-                if(input_pass.getText() != null){
-                    SpannableStringBuilder ssb_ = (SpannableStringBuilder)input_pro.getText();
-                    password = ssb_.toString();
-                    setPass(password);
-                }
-
-                reg data = new reg(getName(),getPass(),getPro());
-                DatabaseReference dataref_ = FirebaseDatabase.getInstance().getReference("register");
-                String key = getName();
-                Map<String, Object> map = new HashMap<>();
-                map.put(key, data.toMap());
-                dataref_.updateChildren(map);
-
-                Intent intent = new Intent(getApplication(), home_1.class);
-                intent.putExtra("NAME",getName());
-                intent.putExtra("KEY",getKey());
-                startActivity(intent);
             }
         });
 
