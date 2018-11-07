@@ -23,10 +23,12 @@ public class button_activity extends AppCompatActivity {
     private String __text;//for test
     private int num;
     private int kind;
+    private double pro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String id_name;
+        String id_pro;
         int key_intent;
         Intent i = getIntent();
         if(i.getStringExtra("NAME") != null) {
@@ -34,6 +36,10 @@ public class button_activity extends AppCompatActivity {
             setName(id_name);
         }
 
+        if(i.getStringExtra("pro") != null) {
+            id_pro = i.getStringExtra("pro");
+            setPro(Double.parseDouble(id_pro));
+        }
         int c_ = i.getIntExtra("count",2);
         setCount(c_);
 
@@ -138,4 +144,6 @@ public class button_activity extends AppCompatActivity {
     public int getKind(){
         return this.kind;
     }
+    public void setPro(double pro_){this.pro = pro_;}
+    public double getPro(){return this.pro;}
 }
