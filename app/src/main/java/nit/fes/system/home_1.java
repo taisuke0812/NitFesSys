@@ -57,8 +57,8 @@ public class home_1 extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        String spinnerItems[] = {"1","2","3","4","5"};
-        String spinnerItems_[] = {"0","1","2","3","4","5"};
+        String spinnerItems[] = {"1","2","3","4","5","6","7","8","9","10","15","20","25","30","35","40","45","50"};
+        String spinnerItems_[] = {"0","1","2","3","4","5","6","7","8"};
         final Spinner spinner = findViewById(R.id.spinner);
         final Spinner spinner_ = findViewById(R.id.spinner_);
 
@@ -135,6 +135,10 @@ public class home_1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //購入履歴ページを見れるようにする
+                Intent intent6 = new Intent(getApplication(), history.class);
+                intent6.putExtra("NAME",getName());
+                intent6.putExtra("KEY",getKey());
+                startActivity(intent6);
             }
         });
 

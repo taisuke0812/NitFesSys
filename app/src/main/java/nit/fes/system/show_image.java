@@ -34,7 +34,7 @@ public class show_image extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(nit.fes.system.R.id.gifView);
         GlideDrawableImageViewTarget target = new GlideDrawableImageViewTarget(imageView);
 
-        Glide.with(this).load(nit.fes.system.R.raw.slot).into(target);
+        Glide.with(this).load(nit.fes.system.R.raw.atari).into(target);
 
         findViewById(nit.fes.system.R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override

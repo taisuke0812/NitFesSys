@@ -27,7 +27,7 @@ public class Display extends AppCompatActivity {
 
 
         WebView webview = findViewById(nit.fes.system.R.id.web_view);
-        webview.loadUrl("https://b1.numazu-nit.com/graph/" + getName());
+        webview.loadUrl("https://b1.numazu-nit.com/public/graph/" + getName() + ".html");
         webview.setWebViewClient(new WebViewClient());
         webview.getSettings().setJavaScriptEnabled(true);
         webview.setVerticalScrollBarEnabled(true);

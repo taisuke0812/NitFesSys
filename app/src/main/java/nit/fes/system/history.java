@@ -23,7 +23,7 @@ public class history extends AppCompatActivity {
 
 
         WebView webview = findViewById(nit.fes.system.R.id.web_view);
-        webview.loadUrl("https://b1.numazu-nit.com/history/" + getName());
+        webview.loadUrl("https://b1.numazu-nit.com/public/history/" + getName() + ".html");
         webview.setWebViewClient(new WebViewClient());
         webview.getSettings().setJavaScriptEnabled(true);
         webview.setVerticalScrollBarEnabled(true);

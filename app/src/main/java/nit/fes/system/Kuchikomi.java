@@ -27,7 +27,7 @@ public class Kuchikomi extends AppCompatActivity {
         key_intent = i.getIntExtra("KEY",0);
         setKey(key_intent);
         WebView webview = findViewById(nit.fes.system.R.id.web);
-        webview.loadUrl("https://twitter.com/search?f=tweets&vertical=default&q=%23NITFes&src=typd");
+        webview.loadUrl("https://twitter.com/search?f=tweets&vertical=default&q=%23NIT_B1&src=typd");
         webview.setWebViewClient(new WebViewClient());
         webview.getSettings().setJavaScriptEnabled(true);
         webview.setVerticalScrollBarEnabled(true);
